@@ -1,0 +1,57 @@
+<div class="row" style="margin-top: 50px; overflow: hidden">
+  <div class="col-lg-4">
+    @for (request of requestList; track $index) {
+    <mat-card
+      appearance="outlined"
+      style="width: 400px; margin-bottom: 10px"
+      (click)="showDetails(request)"
+    >
+      <mat-card-content
+        >{{ request.user.name }}
+        <!-- <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="delete"
+          style="position: absolute; right: 20px; cursor: pointer; color: red"
+        ></mat-icon> -->
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+  <div class="col-lg-6" *ngIf="selectedRequest !== null">
+    <span style="font-weight: 600">Name: </span>
+    {{ selectedRequest.user.name }}
+    <br />
+    <span style="font-weight: 600">Email:</span>
+    {{ selectedRequest.user.email }}
+    <br />
+    <span style="font-weight: 600">Phone:</span>
+    {{ selectedRequest.user.phone }}
+    <br />
+    <span style="font-weight: 600">Address:</span>
+    {{ selectedRequest.user.address }}
+    <br />
+    <span style="font-weight: 600">Gender:</span>
+    {{ selectedRequest.user.gender }}
+    <br />
+    <span style="font-weight: 600">Age:</span> {{ selectedRequest.age }}
+    <br />
+    <span style="font-weight: 600">Description:</span>
+    {{ selectedRequest.job_title }}
+    <br />
+    <span style="font-weight: 600">Working Start Time:</span>
+    {{ selectedRequest.start_time }}
+    <br />
+    <span style="font-weight: 600">Working End Time:</span>
+    {{ selectedRequest.end_time }}
+    <br />
+    <button
+      mat-flat-button
+      color="accent"
+      style="color: white; margin-top: 15px"
+      (click)="acceptReq()"
+    >
+      Accept Request
+    </button>
+  </div>
+</div>

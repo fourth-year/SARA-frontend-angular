@@ -1,0 +1,14 @@
+@for (type of types; track $index) {
+<mat-card appearance="outlined" style="width: 450px; margin-bottom: 10px">
+  <mat-card-content
+    >{{ type.type }}
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="delete"
+      style="position: absolute; right: 20px; cursor: pointer; color: red"
+      (click)="onDelete(type.id)"
+    ></mat-icon>
+  </mat-card-content>
+</mat-card>
+}

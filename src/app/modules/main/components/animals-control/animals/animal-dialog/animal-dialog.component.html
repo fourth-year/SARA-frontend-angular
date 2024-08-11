@@ -1,0 +1,81 @@
+<div style="margin: auto; padding: 20px; text-align: center">
+  <form [formGroup]="animalForm">
+    <div class="avatar-container m-t-10">
+      <div
+        class="image-container"
+        [ngStyle]="{ backgroundImage: 'url(' + file + ')' }"
+      ></div>
+      <label for="avatar-input-file">
+        <div class="icon-wrapper">
+          <input
+            type="file"
+            id="avatar-input-file"
+            accept="image/*"
+            (change)="onFileChange($event)"
+          />
+          <mat-icon class="icon" fontIcon="add"></mat-icon>
+        </div>
+      </label>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Animal Type</mat-label>
+      <mat-select formControlName="animaltype_id">
+        <mat-option *ngFor="let type of animalTypes" [value]="type.value">{{
+          type.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Health</mat-label>
+      <mat-select formControlName="health">
+        <mat-option *ngFor="let health of health" [value]="health.value">{{
+          health.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="department_id">
+        <mat-option
+          *ngFor="let department of departments"
+          [value]="department.value"
+          >{{ department.viewValue }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="entry_date"
+        (dateChange)="dateChanged($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-dialog-actions [align]="'end'">
+      <button
+        mat-flat-button
+        color="primary"
+        style="color: white"
+        (click)="doAction()"
+      >
+        {{ action }}
+      </button>
+      <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</div>

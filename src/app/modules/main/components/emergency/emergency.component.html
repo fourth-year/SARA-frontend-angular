@@ -1,0 +1,31 @@
+<app-page-header [title]="'Emergencies'"></app-page-header>
+<div class="row" style="padding: 3rem; padding-top: 20px">
+  @for (emergency of emergencies; track $index) {
+  <div class="col-lg-3">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ emergency.address }}</mat-card-title>
+        <mat-card-subtitle>{{ emergency.emr_date }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ emergency.contact }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ emergency.photo }}" />
+      <mat-card-content style="margin-top: 10px">
+        <p>
+          {{ emergency.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-flat-button
+          color="warn"
+          style="color: white; margin-left: 5px"
+          (click)="onDelete(emergency.id)"
+        >
+          <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+          delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  }
+</div>

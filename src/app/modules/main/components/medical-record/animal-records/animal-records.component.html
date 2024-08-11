@@ -1,0 +1,74 @@
+<div *ngIf="animalData">
+  <div class="row">
+    <div class="col-lg-2">
+      <img
+        src="{{ animalData.photo }}"
+        style="margin-top: 25px; width: 300px"
+      />
+    </div>
+    <div class="col-lg-10" style="margin-top: 100px; padding-left: 100px">
+      <span style="font-weight: 600">Name: </span>
+      {{ animalData.name }}
+      <br />
+      <span style="font-weight: 600">Age:</span>
+      {{ animalData.age }}
+      <br />
+      <span style="font-weight: 600">Type:</span>
+      {{ animalData.type }}
+      <br />
+      <span style="font-weight: 600">Department:</span>
+      {{ animalData.department }}
+
+      <br />
+    </div>
+  </div>
+  <button
+    mat-fab
+    extended
+    class="add-button"
+    color="primary"
+    style="color: white"
+    (click)="openDialog({})"
+  >
+    <mat-icon>post_add</mat-icon>
+    Add Record
+  </button>
+
+  <div
+    class="row"
+    style="padding-top: 60px; padding-bottom: 50px; overflow: auto"
+  >
+    @for (record of recordsList; track $index) {
+    <div class="m-t-10 col-lg-3">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <mat-card-subtitle>{{ record.date }}</mat-card-subtitle>
+          <p>
+            {{ record.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            color="accent"
+            style="color: white; margin-left: 5px"
+            (click)="openDialog(record)"
+          >
+            <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
+            edit
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+            style="color: white; margin-left: 5px"
+            (click)="onDelete(record.id)"
+          >
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+            delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    }
+  </div>
+</div>

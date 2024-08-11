@@ -1,0 +1,152 @@
+<div class="outer">
+  <div class="middle">
+    <div class="inner" style="width: 50%; padding: 30px">
+      <div style="overflow: hidden">
+        <div>
+          <form class="panel" [formGroup]="signupForm">
+            <h3>SIGN UP</h3>
+            <p class="p-t-5">Sign up for an account</p>
+            @if(errorMessage.length > 0){
+            <ngb-alert [dismissible]="false" [type]="'info'" style="width: 40%">
+              @for (error of errorMessage; track $index) {
+              {{ error }} <br />
+              }
+            </ngb-alert>
+            }
+            <div class="avatar-container m-t-10">
+              <div
+                class="image-container"
+                [ngStyle]="{ backgroundImage: 'url(' + file + ')' }"
+              ></div>
+              <label for="avatar-input-file">
+                <div class="icon-wrapper">
+                  <input
+                    type="file"
+                    id="avatar-input-file"
+                    accept="image/*"
+                    (change)="onFileChange($event)"
+                  />
+                  <mat-icon class="icon" fontIcon="add"></mat-icon>
+                </div>
+              </label>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field>
+                  <mat-label>Full name</mat-label>
+                  <input matInput formControlName="name" />
+                  @if (signupForm.controls.name.errors?.['required']) {
+                  <mat-error> This field is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Phone number</mat-label>
+                  <input matInput formControlName="phone" />
+                  @if (signupForm.controls.phone.errors?.['required']) {
+                  <mat-error> This field is required</mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="address" />
+                  @if (signupForm.controls.address.errors?.['required']) {
+                  <mat-error> This field is required</mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" />
+                  @if (signupForm.controls.email.errors?.['required']) {
+                  <mat-error> This field is required</mat-error>
+                  } @if (signupForm.controls.email.errors?.['email']) {
+                  <mat-error> You must enter a valid email</mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    [type]="hidePassword ? 'password' : 'text'"
+                    formControlName="password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword"
+                  >
+                    <mat-icon>{{
+                      hidePassword ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                  @if (signupForm.controls.password.errors?.['required']) {
+                  <mat-error> This field is required</mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Confirm password</mat-label>
+                  <input
+                    matInput
+                    [type]="hideConfirmPassword ? 'password' : 'text'"
+                    formControlName="c_password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hideConfirmPassword = !hideConfirmPassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideConfirmPassword"
+                  >
+                    <mat-icon>{{
+                      hideConfirmPassword ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                  @if (signupForm.controls.c_password.errors?.['required']) {
+                  <mat-error>This field is required</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              style="width: 400px; color: white"
+              (click)="signup()"
+            >
+              Sign Up
+            </button>
+          </form>
+          <div class="m-t-10" style="text-align: center">
+            <p>
+              Already have an account?
+              <a style="float: none" [routerLink]="['/auth/login']"> Login </a>
+            </p>
+          </div>
+          <!-- <div style="text-align: center; margin-top: 30px">
+            <a class="action-link" style="text-align: center" [routerLink]="['/']">
+              <mat-icon
+                aria-hidden="false"
+                fontIcon="arrow_back"
+                style="vertical-align: middle; font-size: 20px"
+              ></mat-icon>
+              <span style="vertical-align: middle">Back to home page</span></a
+            >
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

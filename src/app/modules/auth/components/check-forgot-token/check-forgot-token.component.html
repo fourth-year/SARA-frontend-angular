@@ -1,0 +1,74 @@
+<div class="outer">
+  <div class="middle">
+    <div class="inner p-10" style="width: 30%">
+      <div class="panel" style="margin: 20px 0">
+        <div class="p-10" style="overflow: hidden">
+          <form [formGroup]="checkTokenForm">
+            <h3>Password reset</h3>
+            <p class="p-t-5">
+              We sent a code to
+              <span style="font-weight: bold">{{ email }}</span>
+            </p>
+            @if(errorMessage.length > 0){
+
+            <ngb-alert
+              class="m-b-10"
+              [dismissible]="false"
+              [type]="'info'"
+              style="width: 70%; margin: 0 auto"
+            >
+              {{ errorMessage }} <br />
+            </ngb-alert>
+
+            } @if(warningMessage.length > 0){
+
+            <ngb-alert
+              class="m-b-10"
+              [dismissible]="false"
+              [type]="'warning'"
+              style="width: 70%; margin: 0 auto"
+            >
+              {{ warningMessage }} <br />
+            </ngb-alert>
+
+            }
+            <mat-form-field style="display: block">
+              <mat-label>Reset code</mat-label>
+              <input matInput formControlName="code" />
+              @if (checkTokenForm.controls.code.errors?.['required']) {
+              <mat-error> This field is required</mat-error>
+              }
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              style="width: 400px; color: white"
+              (click)="verifyCode()"
+            >
+              Continue
+            </button>
+          </form>
+        </div>
+        <div class="m-t-10" style="width: 100%">
+          <p>
+            Didn't recieve the email?
+            <a class="action-link" style="float: none" (click)="resend()"
+              >Click to resend</a
+            >
+          </p>
+        </div>
+        <div class="m-t-10">
+          <a style="text-align: left" [routerLink]="['/login']">
+            <mat-icon
+              aria-hidden="false"
+              fontIcon="arrow_back"
+              style="vertical-align: middle; font-size: 20px"
+            ></mat-icon>
+            <span style="vertical-align: middle">Back to login</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

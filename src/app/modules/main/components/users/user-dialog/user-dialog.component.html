@@ -1,0 +1,23 @@
+<div style="text-align: center; padding: 20px">
+  <h3>Charge Wallet</h3>
+  <p>
+    charge the wallet for <b>{{ userData.name }}</b> with the email
+    <b>{{ userData.email }}</b> and phone number <b>{{ userData.phone }}</b>
+  </p>
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input matInput [(ngModel)]="amount" />
+  </mat-form-field>
+
+  <mat-dialog-actions [align]="'end'">
+    <button
+      mat-flat-button
+      color="primary"
+      style="color: white"
+      (click)="charge()"
+    >
+      Charge
+    </button>
+    <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+  </mat-dialog-actions>
+</div>

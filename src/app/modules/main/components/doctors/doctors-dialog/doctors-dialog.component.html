@@ -1,0 +1,128 @@
+<form [formGroup]="doctorForm" style="overflow: hidden; text-align: center">
+  <div class="avatar-container m-t-10" style="margin: auto">
+    <div
+      class="image-container"
+      [ngStyle]="{ backgroundImage: 'url(' + file + ')' }"
+    ></div>
+    <label for="avatar-input-file">
+      <div class="icon-wrapper">
+        <input
+          type="file"
+          id="avatar-input-file"
+          accept="image/*"
+          (change)="onFileChange($event)"
+        />
+        <mat-icon class="icon" fontIcon="add"></mat-icon>
+      </div>
+    </label>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <mat-form-field>
+        <mat-label>Full name</mat-label>
+        <input matInput formControlName="name" />
+        @if (doctorForm.controls.name.errors?.['required']) {
+        <mat-error> This field is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Phone number</mat-label>
+        <input matInput formControlName="phone" />
+        @if (doctorForm.controls.phone.errors?.['required']) {
+        <mat-error> This field is required</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" [(ngModel)]="address" />
+        @if (doctorForm.controls.address.errors?.['required']) {
+        <mat-error> This field is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6">
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          [(ngModel)]="age"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        @if (doctorForm.controls.email.errors?.['required']) {
+        <mat-error> This field is required</mat-error>
+        } @if (doctorForm.controls.email.errors?.['email']) {
+        <mat-error> You must enter a valid email</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        @if (doctorForm.controls.password.errors?.['required']) {
+        <mat-error> This field is required</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          formControlName="c_password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hideConfirmPassword = !hideConfirmPassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hideConfirmPassword"
+        >
+          <mat-icon>{{
+            hideConfirmPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        @if (doctorForm.controls.c_password.errors?.['required']) {
+        <mat-error>This field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-dialog-actions [align]="'end'">
+    <button
+      mat-flat-button
+      color="primary"
+      style="color: white"
+      (click)="onAdd()"
+    >
+      Add
+    </button>
+    <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+  </mat-dialog-actions>
+</form>

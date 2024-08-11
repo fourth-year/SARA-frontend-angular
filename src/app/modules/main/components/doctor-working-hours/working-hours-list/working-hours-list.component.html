@@ -1,0 +1,14 @@
+@for (item of workingHourList; track $index) {
+<mat-card appearance="outlined" style="width: 450px; margin-bottom: 10px">
+  <mat-card-content
+    >{{ item.day }} from {{ item.start_time }} to {{ item.end_time }}
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="delete"
+      style="position: absolute; right: 20px; cursor: pointer; color: red"
+      (click)="onDelete(item.day)"
+    ></mat-icon>
+  </mat-card-content>
+</mat-card>
+}

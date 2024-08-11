@@ -1,0 +1,26 @@
+<div class="row" style="margin-top: 50px; overflow: hidden">
+  <div class="col-lg-4">
+    <h3>New Department</h3>
+    <mat-form-field style="margin-top: 10px">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="newDepartmentName" />
+    </mat-form-field>
+    <mat-form-field style="margin-top: 5px">
+      <mat-label>Number</mat-label>
+      <input matInput [(ngModel)]="newDepartmentNumber" />
+    </mat-form-field>
+    <br />
+    <button mat-flat-button style="margin-right: 5px">Clear</button>
+    <button
+      mat-flat-button
+      color="accent"
+      style="color: white"
+      (click)="addDepartment()"
+    >
+      Add
+    </button>
+  </div>
+  <div class="col-lg-6">
+    <app-departments-list #departmentsList></app-departments-list>
+  </div>
+</div>

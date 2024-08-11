@@ -1,0 +1,84 @@
+<div class="outer">
+  <div class="middle">
+    <div class="inner" style="width: 50%; padding: 30px">
+      <div style="overflow: hidden">
+        <div>
+          <form class="panel" [formGroup]="userForm">
+            <h3>SIGN UP</h3>
+            <p class="p-t-5">Sign up for an account</p>
+
+            <div class="avatar-container m-t-10">
+              <div
+                class="image-container"
+                [ngStyle]="{ backgroundImage: 'url(' + file + ')' }"
+              ></div>
+              <label for="avatar-input-file">
+                <div class="icon-wrapper">
+                  <input
+                    type="file"
+                    id="avatar-input-file"
+                    accept="image/*"
+                    (change)="onFileChange($event)"
+                  />
+                  <mat-icon class="icon" fontIcon="add"></mat-icon>
+                </div>
+              </label>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field>
+                  <mat-label>Full name</mat-label>
+                  <input matInput formControlName="name" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Phone number</mat-label>
+                  <input matInput formControlName="phone" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" />
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="address" />
+                </mat-form-field>
+              </div>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              style="width: 400px; color: white"
+              (click)="onUpdateProfile()"
+            >
+              Update Profile
+            </button>
+          </form>
+
+          <!-- <div style="text-align: center; margin-top: 30px">
+              <a class="action-link" style="text-align: center" [routerLink]="['/']">
+                <mat-icon
+                  aria-hidden="false"
+                  fontIcon="arrow_back"
+                  style="vertical-align: middle; font-size: 20px"
+                ></mat-icon>
+                <span style="vertical-align: middle">Back to home page</span></a
+              >
+            </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

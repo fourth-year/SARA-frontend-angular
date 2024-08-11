@@ -1,0 +1,85 @@
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 7%;
+  margin-bottom: 8%;
+  font-weight: 600;
+  color: #102c57;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+p {
+  font-size: 1rem;
+}
+
+span {
+  vertical-align: top;
+
+  font-size: 1.5rem;
+  color: red;
+}
+
+hr {
+  border: dotted #102c57 5px;
+  border-bottom: none;
+  width: 250px;
+  margin: 15px auto;
+}
+
+img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.close-dialog {
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-image {
+  display: inline-block;
+  margin-left: 15px;
+  vertical-align: top;
+  width: 70px;
+  height: 70px;
+}
+
+.user-name-and-stars {
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: top;
+  padding-top: 10px;
+  line-height: 1;
+}
+
+.review-text {
+  font-family: "Mulish", sans-serif;
+}
+
+.no-reviews-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 30%;
+  font-family: "Mulish", sans-serif;
+}
+
+.delete-button {
+  float: right;
+  margin-right: 40px;
+  margin-top: 30px;
+  background-color: white;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.user-name {
+  font-weight: 700;
+  font-family: "Mulish", sans-serif;
+}

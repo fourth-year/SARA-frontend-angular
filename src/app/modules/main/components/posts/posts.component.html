@@ -1,0 +1,61 @@
+<app-page-header [title]="'Posts'"></app-page-header>
+<div style="padding: 3rem; padding-top: 20px">
+  <button
+    mat-fab
+    extended
+    class="add-button"
+    color="primary"
+    style="color: white"
+    (click)="openDialog({})"
+  >
+    <mat-icon>post_add</mat-icon>
+    Add Post
+  </button>
+  <div
+    class="row"
+    style="padding-top: 60px; padding-bottom: 50px; overflow: auto"
+  >
+    @for (post of posts; track $index) {
+    <div class="m-t-10" style="display: flex; justify-content: center">
+      <mat-card class="example-card">
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="edit"
+          class="edit-button"
+          (click)="openDialog(post)"
+        ></mat-icon>
+        <img mat-card-image src="{{ post.photo }}" style="margin-top: 35px" />
+        <mat-card-content>
+          <p>
+            {{ post.text }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button disabled>
+            <mat-icon aria-hidden="false" fontIcon="thumb_up"></mat-icon>
+            {{ post.likes.length }}
+          </button>
+          <button
+            mat-flat-button
+            color="accent"
+            style="color: white; margin-left: 5px"
+            (click)="showComments(post.id)"
+          >
+            <mat-icon aria-hidden="false" fontIcon="chat"></mat-icon>
+            comments
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+            style="color: white; margin-left: 5px"
+            (click)="onDelete(post.id)"
+          >
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+            delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    }
+  </div>
+</div>

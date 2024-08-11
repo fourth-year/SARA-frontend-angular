@@ -1,0 +1,66 @@
+<app-page-header [title]="'Working Hours'"></app-page-header>
+<div style="padding: 3rem; padding-top: 20px">
+  <div class="row" style="margin-top: 30px; overflow: hidden">
+    <div class="col-lg-4">
+      <form [formGroup]="workingDetailsForm">
+        <h3>New Working Details</h3>
+        <div
+          *ngIf="workingDetailsForm.hasError('timeError')"
+          class="error"
+          style="color: red; font-size: 0.9rem; margin-bottom: 10px"
+        >
+          End time must be later than start time.
+        </div>
+        <mat-form-field>
+          <mat-label>Day</mat-label>
+          <mat-select formControlName="day">
+            <mat-option *ngFor="let day of days" [value]="day.value">{{
+              day.viewValue
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            [ngxTimepicker]="startTime"
+            [format]="24"
+            formControlName="start_time"
+          />
+        </mat-form-field>
+        <ngx-material-timepicker
+          [theme]="customTheme"
+          #startTime
+        ></ngx-material-timepicker>
+        <mat-form-field>
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            [ngxTimepicker]="endTime"
+            [format]="24"
+            formControlName="end_time"
+          />
+        </mat-form-field>
+        <ngx-material-timepicker
+          [theme]="customTheme"
+          #endTime
+        ></ngx-material-timepicker>
+      </form>
+
+      <button mat-flat-button style="margin-right: 5px" (click)="clear()">
+        Clear
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        style="color: white"
+        (click)="onSubmit()"
+      >
+        Add
+      </button>
+    </div>
+    <div class="col-lg-6">
+      <app-working-hours-list #workingHoursList></app-working-hours-list>
+    </div>
+  </div>
+</div>

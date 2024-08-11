@@ -1,0 +1,50 @@
+<div style="margin: auto; text-align: center; padding: 20px">
+  <form [formGroup]="sessionForm">
+    <h2>Add Post</h2>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numbers Of Attendees</mat-label>
+      <input matInput formControlName="num_of_attendees" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [min]="todayDate"
+        formControlName="date"
+        (dateChange)="dateChanged($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Time</mat-label>
+      <input
+        matInput
+        [ngxTimepicker]="time"
+        [format]="24"
+        formControlName="time"
+      />
+    </mat-form-field>
+    <ngx-material-timepicker
+      [theme]="customTheme"
+      #time
+    ></ngx-material-timepicker>
+    <mat-dialog-actions [align]="'end'" style="padding-right: 0px">
+      <button
+        mat-flat-button
+        color="primary"
+        style="color: white"
+        (click)="doAction()"
+      >
+        Add
+      </button>
+      <button mat-button mat-flat-button (click)="closeDialog()">Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</div>

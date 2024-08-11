@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span class="example-spacer"></span>
+  <mat-slide-toggle
+    [formControl]="switchTheme"
+    color="primary"
+    (click)="$event.stopPropagation()"
+    style="margin-right: 40px"
+    ><span style="color: white"> Switch to Dark Flavor</span></mat-slide-toggle
+  >
+  <button mat-button style="color: white; margin-right: 40px" (click)="navigateToUpdateProfile()">
+    <mat-icon aria-hidden="false" fontIcon="manage_accounts"></mat-icon>
+    update profile
+  </button>
+
+  <button mat-button *ngIf="!loggedIn" (click)="login()" style="color: white">
+    Login
+  </button>
+
+  <button mat-button *ngIf="loggedIn" (click)="logout()" style="color: white">
+    Logout
+  </button>
+</mat-toolbar>
