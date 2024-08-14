@@ -40,27 +40,31 @@ export class UpdateProfileComponent {
 
   public onFileChange(event: any): void {
     const files = event.target.files as FileList;
-    // convert the image file to base64
-    let file = event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      this.userForm.controls['photo'].patchValue(reader.result as string);
-    };
-
-    //////////////////////////////////// end
     if (files.length > 0) {
-      const _file = URL.createObjectURL(files[0]);
-      this.file = _file;
-      this.resetInput();
+      let file = files[0];
+      let reader = new FileReader();
+  
+      // Read the file as a DataURL (base64 string)
+      reader.readAsDataURL(file);
+  
+      reader.onload = () => {
+        // Get the base64 string without the prefix
+        const base64String = (reader.result as string).split(',')[1];  
+  
+        // Update form control with the base64 string
+        this.userForm.controls['photo'].patchValue(base64String);
+  
+        // For preview purposes, use the full base64 string with the prefix
+        this.file = base64String as string;  // This includes 'data:image/jpeg;base64,...'
+  
+        // Reset the input file field if needed
+        this.resetInput();
+      };
     }
   }
-
+  
   public resetInput(): void {
-    const input = document.getElementById(
-      'avatar-input-file'
-    ) as HTMLInputElement;
+    const input = document.getElementById('avatar-input-file') as HTMLInputElement;
     if (input) {
       input.value = '';
     }

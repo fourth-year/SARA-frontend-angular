@@ -24,9 +24,9 @@
           class="edit-button"
           (click)="openDialog(post)"
         ></mat-icon>
-        <img mat-card-image src="{{ post.photo }}" style="margin-top: 35px" />
+        <img mat-card-image src="data:image/jpeg;base64,{{ post.photo }}" style="margin-top: 35px" />
         <mat-card-content>
-          <p>
+          <p class="m-t-10">
             {{ post.text }}
           </p>
         </mat-card-content>

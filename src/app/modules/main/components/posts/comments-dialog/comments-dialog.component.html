@@ -19,7 +19,10 @@
   <div class="review" *ngFor="let comment of comments">
     <div class="user-info">
       <div class="user-image">
-        <img src="{{ comment.user.photo }}" alt="user-image" />
+        <img
+          src="data:image/jpeg;base64,{{ comment.user.photo }}"
+          alt="user-image"
+        />
         <!--  -->
       </div>
       <div class="user-name-and-stars">

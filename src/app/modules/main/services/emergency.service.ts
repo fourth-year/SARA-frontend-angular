@@ -14,7 +14,12 @@ export class EmergencyService {
 
   public getAllEmergencies(): Observable<EmergencyResponse> {
     return this._http.get<EmergencyResponse>(
-      this._apiUrl + '/user/emergency/getall'
+      this._apiUrl + '/user/emergency/getall',
+      {
+        params: {
+          status: '1',
+        },
+      }
     );
   }
 
