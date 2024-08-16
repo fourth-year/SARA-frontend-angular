@@ -45,6 +45,7 @@ export class SessionsComponent {
         this._sessionService.addSession(result.data).subscribe(
           (response) => {
             console.log(response);
+            this.ngOnInit();
           },
           (error) => {
             console.log(error);
